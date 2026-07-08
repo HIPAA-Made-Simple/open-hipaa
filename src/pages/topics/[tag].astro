@@ -1,0 +1,36 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+	const docs = await getCollection('docs');
+	const tags = new Set(docs.flatMap((d) => d.data.tags ?? []));
+	return [...tags].map((tag) => ({
+		params: { tag },
+		props: {
+			tag,
+			articles: docs.filter((d) => (d.data.tags ?? []).includes(tag)),
+		},
+	}));
+}
+
+const { tag, articles } = Astro.props;
+---
+
+<StarlightPage
+	frontmatter={{
+		title: `Topic: ${tag}`,
+		description: `All Open HIPAA articles tagged “${tag}”.`,
+		tableOfContents: false,
+	}}
+>
+	<ul>
+		{articles.map((article) => (
+			<li>
+				<a href={`/${article.id}/`}>{article.data.title}</a>
+				{article.data.description && <> — {article.data.description}</>}
+			</li>
+		))}
+	</ul>
+	<p><a href="/topics/">← All topics</a></p>
+</StarlightPage>

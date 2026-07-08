@@ -1,0 +1,37 @@
+---
+title: Open HIPAA
+description: Open, plain-language HIPAA answers and reference architectures — built for humans and AI agents.
+template: splash
+hero:
+  tagline: Plain-language answers to real HIPAA questions, plus open reference architectures for compliant setups. Free to use, cite, and reuse (CC BY 4.0) — by humans and AI agents alike.
+  actions:
+    - text: Browse Questions
+      link: /questions/does-a-therapist-using-google-workspace-need-a-baa/
+      icon: right-arrow
+    - text: Reference Architectures
+      link: /architectures/small-practice-google-workspace/
+      variant: minimal
+      icon: seti:notebook
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid stagger>
+	<Card title="Atomic answers" icon="approve-check">
+		One real-world question per page, with the direct answer first. No fluff,
+		no gatekeeping, no email walls.
+	</Card>
+	<Card title="Reference architectures" icon="setting">
+		Concrete, opinionated diagrams of HIPAA-compliant setups for small
+		practices and health-tech teams.
+	</Card>
+	<Card title="Built for AI agents" icon="rocket">
+		Every page ships structured data, a raw-markdown mirror, and an
+		<a href="/llms.txt">llms.txt</a> index — so assistants can find and cite
+		it cleanly.
+	</Card>
+	<Card title="Open by design" icon="open-book">
+		Content is CC BY 4.0, code is MIT, and the whole site lives in a public
+		GitHub repo. See <a href="/contribute/">how to contribute</a>.
+	</Card>
+</CardGrid>

@@ -1,0 +1,20 @@
+{
+  "name": "open-hipaa",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/starlight": "^0.41.3",
+    "astro": "^7.0.2",
+    "astro-embed": "^0.13.1",
+    "mermaid": "^11.16.0",
+    "sharp": "^0.34.5"
+  }
+}

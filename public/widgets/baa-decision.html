@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Do I need a BAA?</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 1.5rem; color: #1c1e21; }
+  @media (prefers-color-scheme: dark) { body { background: #181a1b; color: #e8e6e3; } }
+  .q { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; }
+  button { font-size: 1rem; padding: 0.5rem 1.25rem; margin-right: 0.5rem; cursor: pointer; border-radius: 0.4rem; border: 1px solid #888; background: transparent; color: inherit; }
+  button:hover { background: rgba(128,128,128,0.15); }
+  .result { font-size: 1.1rem; margin-top: 1rem; padding: 1rem; border-radius: 0.5rem; }
+  .yes { background: rgba(220, 80, 80, 0.15); }
+  .no { background: rgba(80, 180, 100, 0.15); }
+</style>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    // Example AI-generated interactive widget. Self-contained: no external
+    // requests, no build step — drop the file in public/widgets/ and embed it.
+    const steps = {
+      start: { q: "Does the vendor create, receive, store, or transmit PHI for you?", yes: "conduit", no: "no-baa" },
+      conduit: { q: "Is the vendor a pure conduit (like the postal service or an ISP) that only transports data without storing it?", yes: "no-baa-conduit", no: "baa" },
+    };
+    const results = {
+      "no-baa": { cls: "no", text: "No BAA needed — but document why in your risk analysis." },
+      "no-baa-conduit": { cls: "no", text: "Likely no BAA (conduit exception) — but the exception is narrow. Document it." },
+      "baa": { cls: "yes", text: "Yes — this vendor is a business associate. Get a signed BAA before PHI flows." },
+    };
+    const app = document.getElementById("app");
+    function render(key) {
+      if (results[key]) {
+        app.innerHTML = '<div class="result ' + results[key].cls + '">' + results[key].text + '</div><p><button onclick="render(\'start\')">Start over</button></p>';
+        return;
+      }
+      const s = steps[key];
+      app.innerHTML = '<div class="q">' + s.q + '</div>' +
+        '<button onclick="render(\'' + s.yes + '\')">Yes</button>' +
+        '<button onclick="render(\'' + s.no + '\')">No</button>';
+    }
+    window.render = render;
+    render("start");
+  </script>
+</body>
+</html>

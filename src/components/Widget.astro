@@ -1,0 +1,14 @@
+---
+// Embed a self-contained HTML widget (e.g. an AI-generated interactive)
+// from public/widgets/. Usage in MDX:
+//   import Widget from '../../../components/Widget.astro';
+//   <Widget src="/widgets/my-widget.html" title="BAA decision helper" />
+const { src, title = 'Interactive widget', height = '480px' } = Astro.props;
+---
+
+<iframe
+	src={src}
+	title={title}
+	loading="lazy"
+	style={`width: 100%; height: ${height}; border: 1px solid var(--sl-color-gray-5); border-radius: 0.5rem; background: var(--sl-color-bg);`}
+></iframe>
