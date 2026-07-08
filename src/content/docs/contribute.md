@@ -4,7 +4,7 @@ description: How to suggest a question, fix an answer, or add a reference archit
 ---
 
 Open HIPAA lives in a public GitHub repository:
-[compliance-rehab/open-hipaa](https://github.com/compliance-rehab/open-hipaa).
+[HIPAA-Made-Simple/open-hipaa](https://github.com/HIPAA-Made-Simple/open-hipaa).
 
 ## Ways to contribute
 

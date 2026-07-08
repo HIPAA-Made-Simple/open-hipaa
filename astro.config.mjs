@@ -16,7 +16,7 @@ export default defineConfig({
 				{
 					icon: 'github',
 					label: 'GitHub',
-					href: 'https://github.com/compliance-rehab/open-hipaa',
+					href: 'https://github.com/HIPAA-Made-Simple/open-hipaa',
 				},
 			],
 			components: {
